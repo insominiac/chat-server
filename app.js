@@ -5,7 +5,7 @@ const cors = require('cors')
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey:'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'
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -15,7 +15,6 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', async (req, res) => {
-  res.send(`hello ${process.env.OPENAI_API_KEY}`)
   res.status(200).send({
     message: 'Hello from ChatBot!'
   })
